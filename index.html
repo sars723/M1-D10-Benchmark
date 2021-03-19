@@ -325,11 +325,22 @@ heading.innerText="new Heading";
 /* 35) Write a function to add an extra row to the table */
 
 const tableCon=document.querySelector("table")
-const tr=document.createElement("tr")
-tableCon.appendChild(tr)
+
+
 //test if the code above works
-tr.innerText="new row added"
-console.log(tr)
+const bodyhtml=document.querySelector("body")
+const btnRow=document.createElement("button")
+btnRow.innerText="add row"
+bodyhtml.appendChild(btnRow)
+
+btnRow.onclick= function()
+{
+    const tr=document.createElement("tr")
+    tr.innerText="new row added"
+    tableCon.appendChild(tr)
+}
+
+//console.log(tr)
 
 
 /* 36) Write a function to add the class "test" to each row in the table */
@@ -367,20 +378,28 @@ window.onload()
 
 const addNewItem=function(){
     const ul=document.querySelector("ul")
-    const li=document.createElement("li")
-    ul.appendChild(li)
+    btnAddList=document.createElement("button")
+    bodyhtml.appendChild(btnAddList)
+    btnAddList.innerText="add new list"
+    let i=0
+    btnAddList.onclick=function(){
+        
+        const li=document.createElement("li")
+        ul.appendChild(li)
+        li.innerHTML="new list"+ (i=i+1) 
+    }
+    
     
 }
 addNewItem()
 /* 40) Write a function to empty a list */
 
 const emptyList=function(){
-    const li=document.querySelectorAll("li")
-    console.log(li)
-    for(let i=0;i<li.length;i++)
-    {
+    const ul=document.querySelectorAll("ul")
+    
+    
     li.children[li].remove()
-    }
+    
 }
 //emptyList()
 
@@ -408,15 +427,15 @@ function mouseOver(event)
 
 /* 42) Add a button to hide every image on the page */
 
-const bodyhtml=document.querySelector("body")
+//const bodyhtml=document.querySelector("body")
 const btn=document.createElement("button")
-const imag=document.querySelectorAll("image")
+const imag=document.querySelectorAll("img")
 btn.innerText="hide image "
 bodyhtml.appendChild(btn)
 btn.onclick=function(){
     for(i=0;i<imag.length;i++)
     {
-    imag[i].style.display="none"
+    imag[i].style.visibility="hidden"
     }
 }
 
@@ -443,11 +462,15 @@ for(i=0;i<tdAll.length;i++)
 {
     
     if(isNaN(tdAll[i].innerText))
+    {sumAlltd+=tdAll[i].innerText;
+        //console.log( isNaN(tdAll[i].innerText))
+    }
+    else
     {
-        sumAlltd+=tdAll[i].innerText;
+        
     }
 }
-
+console.log("sum="+sumAlltd)
 
 /* 45) Delete the last letter from the title each time the user clicks on it */
 
